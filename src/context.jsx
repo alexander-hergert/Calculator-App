@@ -1,8 +1,11 @@
-import { useContext, createContext, useState } from "react";
+import { useContext, createContext, useState, useReducer } from "react";
+import reducer from "./reducer";
 
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
+  const initialState = { inputNumber: 0, result: 0 };
+  const [state, dispatch] = useReducer(reducer, initialState);
   const [theme, setTheme] = useState(1);
 
   return (
