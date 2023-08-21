@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useGlobalContext } from "../context";
 
 /************** STYLES **************/
 
@@ -8,7 +9,13 @@ const Style = styled.div``;
 /************** COMPONENT **************/
 
 const Output = () => {
-  return <Style>Output</Style>;
+  const { state } = useGlobalContext();
+  const { inputNumber, result, type } = state;
+  return (
+    <Style>
+      <p>{type === "NUMBER" ? inputNumber : result}</p>
+    </Style>
+  );
 };
 
 export default Output;

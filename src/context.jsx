@@ -4,7 +4,7 @@ import reducer from "./reducer";
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const initialState = { inputNumber: 0, result: 0 };
+  const initialState = { inputNumber: "0", result: "0", type: null };
   const [state, dispatch] = useReducer(reducer, initialState);
   const [theme, setTheme] = useState(1);
 
@@ -13,6 +13,8 @@ export const AppProvider = ({ children }) => {
       value={{
         theme,
         setTheme,
+        state,
+        dispatch,
       }}
     >
       {children}
