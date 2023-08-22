@@ -9,7 +9,7 @@ const Style = styled.button``;
 /************** COMPONENT **************/
 
 const Key = ({ value, action }) => {
-  const { dispatch } = useGlobalContext();
+  const { state, dispatch } = useGlobalContext();
 
   const handleClick = () => {
     dispatch({ type: action, payload: value });

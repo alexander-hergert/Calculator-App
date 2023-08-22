@@ -4,7 +4,12 @@ import reducer from "./reducer";
 const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
-  const initialState = { inputNumber: "0", result: "0", type: null };
+  const initialState = {
+    inputNumber: "",
+    result: 0,
+    type: null,
+    selectedOperator: null,
+  };
   const [state, dispatch] = useReducer(reducer, initialState);
   const [theme, setTheme] = useState(1);
 
