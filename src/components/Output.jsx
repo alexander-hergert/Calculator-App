@@ -13,7 +13,7 @@ const Output = () => {
   const { inputNumber, result, type } = state;
   return (
     <Style>
-      {!type ? <p>0</p> : <p>{type === "CONCAT" ? inputNumber : result}</p>}
+      <p>{type === "INPUT" ? inputNumber : result}</p>
     </Style>
   );
 };

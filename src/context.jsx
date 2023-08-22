@@ -5,8 +5,8 @@ const AppContext = createContext();
 
 export const AppProvider = ({ children }) => {
   const initialState = {
-    inputNumber: "",
-    result: 0,
+    inputNumber: "0",
+    result: "0",
     type: null,
     selectedOperator: null,
   };

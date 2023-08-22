@@ -1,91 +1,105 @@
 export const reducer = (state, action) => {
-  switch (action.type) {
-    case "CONCAT":
-      const newConcatState = {
-        inputNumber: state.inputNumber + action.payload,
-        result: state.result,
-        type: "CONCAT",
-        selectedOperator: state.selectedOperator,
-      };
-      //Validation logic
-      //Check if commas appear more than once in the inputNumber, if so then we return unchanged state
-      const dotCount = (newConcatState.inputNumber.match(/\./g) || []).length; //using regex
-      if (dotCount > 1) {
-        return { ...state };
-      }
-      return newConcatState;
+  if (action.type === "CONCAT") {
+    let input;
+    if (state.inputNumber === "0") {
+      input = "";
+    } else {
+      input = state.inputNumber;
+    }
 
-    case "CALCULATE":
-      const value = action.payload;
-      let newState = { ...state };
-      const selectedOperator = state.selectedOperator;
+    const newState = {
+      inputNumber: input + action.payload,
+      result: state.result,
+      type: "INPUT",
+      selectedOperator: state.selectedOperator,
+    };
+    //Validation logic
+    //Check if commas appear more than once in the inputNumber, if so then we return unchanged state
+    const dotCount = (newState.inputNumber.match(/\./g) || []).length; //using regex
+    if (dotCount > 1) {
+      return { ...state };
+    }
+    return newState;
+  } else if (action.type === "CALCULATE") {
+    const value = action.payload;
+    let newState = { ...state };
+    const selectedOperator = state.selectedOperator;
 
-      //Operation execution
-      if (selectedOperator === "+") {
-        newState = {
-          inputNumber: state.inputNumber,
-          result: parseFloat(state.result) + parseFloat(state.inputNumber || 0),
-          type: "OPERATE",
-        };
-      } else if (selectedOperator === "-") {
-        newState = {
-          inputNumber: state.inputNumber,
-          result: parseFloat(state.result) - parseFloat(state.inputNumber || 0),
-          type: "OPERATE",
-        };
-      } else if (selectedOperator === "x") {
-        newState = {
-          inputNumber: state.inputNumber,
-          result: parseFloat(state.result) * parseFloat(state.inputNumber || 0),
-          type: "OPERATE",
-        };
-      } else if (selectedOperator === "/") {
-        newState = {
-          inputNumber: state.inputNumber,
-          result: parseFloat(state.result) / parseFloat(state.inputNumber || 0),
-          type: "OPERATE",
-        };
-      }
-
-      //On the first run or result or reset
-      if (selectedOperator === null) {
-        newState.result = newState.inputNumber;
-        newState.type = "OPERATE";
-      }
-
-      newState.selectedOperator = value; //previous value
-      newState.inputNumber = "";
-      return newState;
-
-    case "DELETE":
-      console.log("delete");
-      return {
+    //Operation execution
+    if (selectedOperator === "+") {
+      newState = {
         ...state,
+        inputNumber: state.inputNumber,
+        result: parseFloat(state.result) + parseFloat(state.inputNumber || 0),
+        type: "RESULT",
       };
-    case "RESULT":
-      console.log("result");
-      return {
+    } else if (selectedOperator === "-") {
+      newState = {
         ...state,
+        inputNumber: state.inputNumber,
+        result: parseFloat(state.result) - parseFloat(state.inputNumber || 0),
+        type: "RESULT",
       };
-    case "RESET":
-      console.log("reset");
-      return {
+    } else if (selectedOperator === "x") {
+      newState = {
         ...state,
+        inputNumber: state.inputNumber,
+        result: parseFloat(state.result) * parseFloat(state.inputNumber || 1),
+        type: "RESULT",
       };
-    default:
-      throw new Error("Unsupported action type");
+    } else if (selectedOperator === "/") {
+      newState = {
+        ...state,
+        inputNumber: state.inputNumber,
+        result: parseFloat(state.result) / parseFloat(state.inputNumber || 1),
+        type: "RESULT",
+      };
+    }
+
+    //On the first run or result or reset
+    if (selectedOperator === null) {
+      newState.result = newState.inputNumber;
+      newState.type = "RESULT";
+    }
+
+    newState.selectedOperator = value; //previous value
+    newState.inputNumber = "";
+
+    if (value === "=") {
+      newState = {
+        ...newState,
+        inputNumber: "0",
+        selectedOperator: null,
+      };
+    }
+
+    return newState;
+  } else if (action.type === "DELETE") {
+    if (state.inputNumber.length === 1) {
+      return { ...state, inputNumber: "0", result: state.result };
+    }
+    const newState = {
+      inputNumber: state.inputNumber.substring(0, state.inputNumber.length - 1),
+      result: state.result,
+      type: "INPUT",
+      selectedOperator: state.selectedOperator,
+    };
+
+    if (newState.inputNumber === "") {
+      return { ...newState, type: "RESULT" };
+    }
+
+    return newState;
+  } else if (action.type === "RESET") {
+    return {
+      inputNumber: "0",
+      result: "0",
+      type: null,
+      selectedOperator: null,
+    };
+  } else {
+    throw new Error("Unsupported action type");
   }
 };
 
 export default reducer;
-
-//alternative is loop throught the inputNumber and count the commas
-// let count = 0;
-// for (let i = 0; i < newConcatState.inputNumber.length; i++) {
-//   if (newConcatState.inputNumber[i] === ".") {
-//     count++;
-//     if (count > 1) {
-//       return { ...state };
-//     }
-//   }
-// }

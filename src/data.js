@@ -16,5 +16,5 @@ export const data = [
   { value: "/", action: "CALCULATE" },
   { value: "x", action: "CALCULATE" },
   { value: "RESET", action: "RESET" },
-  { value: "=", action: "RESULT" },
+  { value: "=", action: "CALCULATE" },
 ];
