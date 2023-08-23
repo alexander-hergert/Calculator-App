@@ -4,7 +4,9 @@ import { useGlobalContext } from "../context";
 
 /************** STYLES ***************/
 
-const Style = styled.button``;
+const Style = styled.button`
+  padding: 1rem;
+`;
 
 /************** COMPONENT **************/
 

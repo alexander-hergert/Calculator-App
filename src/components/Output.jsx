@@ -4,7 +4,9 @@ import { useGlobalContext } from "../context";
 
 /************** STYLES **************/
 
-const Style = styled.div``;
+const Style = styled.div`
+  text-align: right;
+`;
 
 /************** COMPONENT **************/
 
