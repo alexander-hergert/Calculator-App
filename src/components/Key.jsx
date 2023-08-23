@@ -14,6 +14,7 @@ const Key = ({ value, action }) => {
   const { state, dispatch } = useGlobalContext();
 
   const handleClick = () => {
+    console.log(value);
     dispatch({ type: action, payload: value });
   };
 
