@@ -5,10 +5,11 @@ import Theme from "./Theme";
 
 /************** STYLES **************/
 
-const Style = styled.header`
+const Style = styled.section`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 30rem;
 `;
 
 /************** COMPONENT **************/

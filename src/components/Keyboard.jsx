@@ -6,9 +6,14 @@ import { useGlobalContext } from "../context";
 
 /************** STYLES **************/
 
-const Style = styled.div`
+const Style = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 1.5rem;
+  gap: 1rem;
+  background-color: hsl(223, 31%, 20%);
+  border-radius: 10px;
+  width: 30rem;
 `;
 
 /************** COMPONENT **************/
@@ -20,13 +25,10 @@ const Keyboard = () => {
     e.preventDefault();
     if (e.key === "Enter" || e.key === "=") {
       dispatch({ type: "CALCULATE", payload: "=" });
-    } else if (
-      e.key === "+" ||
-      e.key === "-" ||
-      e.key === "*" ||
-      e.key === "/"
-    ) {
+    } else if (e.key === "+" || e.key === "-" || e.key === "/") {
       dispatch({ type: "CALCULATE", payload: e.key });
+    } else if (e.key === "*") {
+      dispatch({ type: "CALCULATE", payload: "x" });
     } else if (e.key === ",") {
       dispatch({ type: "TYPE", payload: "." });
     } else if (e.key === "Backspace") {

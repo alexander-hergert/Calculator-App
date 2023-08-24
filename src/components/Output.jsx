@@ -4,8 +4,18 @@ import { useGlobalContext } from "../context";
 
 /************** STYLES **************/
 
-const Style = styled.div`
+const Style = styled.section`
   text-align: right;
+  background-color: hsl(223, 31%, 20%);
+  color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+  width: 30rem;
+
+  p {
+    margin: 0;
+  }
 `;
 
 /************** COMPONENT **************/
