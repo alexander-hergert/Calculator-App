@@ -8,12 +8,38 @@ import { useGlobalContext } from "../context";
 
 const Style = styled.section`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
   padding: 1.5rem;
   gap: 1rem;
-  background-color: hsl(223, 31%, 20%);
+  background-color: ${(props) => props.theme.toggleKeypadBackground};
   border-radius: 10px;
   width: 30rem;
+
+  //style buttons here
+
+  #delete,
+  #reset,
+  #result {
+    color: white;
+  }
+
+  #delete {
+    background-color: ${(props) => props.theme.keyBackgroundReset};
+    border-bottom: 5px solid ${(props) => props.theme.keyShadowReset};
+  }
+
+  #reset {
+    background-color: ${(props) => props.theme.keyBackgroundReset};
+    border-bottom: 5px solid ${(props) => props.theme.keyShadowReset};
+    grid-area: 5 / 1 / 5 / 3;
+  }
+
+  #result {
+    background-color: ${(props) => props.theme.keyBackgroundToggleResult};
+    border-bottom: 5px solid ${(props) => props.theme.keyShadowToggleResult};
+    grid-area: 5 / 3 / 5 / 5;
+  }
 `;
 
 /************** COMPONENT **************/

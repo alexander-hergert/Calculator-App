@@ -2,7 +2,7 @@ export const data = [
   { value: "7", action: "TYPE" },
   { value: "8", action: "TYPE" },
   { value: "9", action: "TYPE" },
-  { value: "DEL", action: "DELETE" },
+  { id: "delete", value: "DEL", action: "DELETE" },
   { value: "4", action: "TYPE" },
   { value: "5", action: "TYPE" },
   { value: "6", action: "TYPE" },
@@ -15,6 +15,6 @@ export const data = [
   { value: "0", action: "TYPE" },
   { value: "/", action: "CALCULATE" },
   { value: "x", action: "CALCULATE" },
-  { value: "RESET", action: "RESET" },
-  { value: "=", action: "CALCULATE" },
+  { id: "reset", value: "RESET", action: "RESET" },
+  { id: "result", value: "=", action: "CALCULATE" },
 ];

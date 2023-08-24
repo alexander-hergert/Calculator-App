@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useGlobalContext } from "../context";
 
@@ -12,6 +12,7 @@ const Style = styled.div`
   h2 {
     font-size: 1.25rem;
     margin: 0;
+    text-transform: uppercase;
   }
 
   .vertical {
@@ -26,13 +27,37 @@ const Style = styled.div`
     padding: 0 1rem;
   }
 
-  input {
+  input[type="radio"] {
     width: 1.25rem;
     height: 1.25rem;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: ${(props) => props.theme.toggleKeypadBackground};
+  }
+
+  input[type="radio"]::before {
+    content: "";
+    display: inline-block;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    background-color: ${(props) => props.theme.toggleKeypadBackground};
+    margin-bottom: 10px;
+  }
+
+  input[type="radio"]:checked::before {
+    content: "";
+    display: inline-block;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    background-color: ${(props) => props.theme.keyBackgroundToggleResult};
+    margin-bottom: 10px;
   }
 
   .theme-switcher-background {
-    background-color: hsl(223, 31%, 20%);
+    background-color: ${(props) => props.theme.toggleKeypadBackground};
     display: flex;
     justify-content: space-between;
     gap: 1rem;
@@ -48,6 +73,17 @@ const Theme = () => {
   const handleOnChange = (e) => {
     setTheme(e.target.value);
   };
+
+  //onload pick prefered theme or pick first if not prefered and then localStorage
+  useEffect(() => {
+    const firstRadioButton = document.querySelector(
+      'input[type="radio"]:first-child'
+    );
+
+    if (firstRadioButton) {
+      firstRadioButton.checked = true;
+    }
+  }, []);
 
   return (
     <Style>

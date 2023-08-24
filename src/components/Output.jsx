@@ -6,8 +6,8 @@ import { useGlobalContext } from "../context";
 
 const Style = styled.section`
   text-align: right;
-  background-color: hsl(223, 31%, 20%);
-  color: white;
+  background-color: ${(props) => props.theme.screenBackground};
+  color: ${(props) => props.theme.outputText};
   border-radius: 10px;
   padding: 1.5rem;
   margin: 1.5rem 0;
