@@ -56,6 +56,16 @@ const Style = styled.div`
     margin-bottom: 10px;
   }
 
+  input[type="radio"]:hover::before {
+    content: "";
+    display: inline-block;
+    width: 1.25rem;
+    height: 1.25rem;
+    border-radius: 50%;
+    background-color: ${(props) => props.theme.activeResultToggleKey};
+    margin-bottom: 10px;
+  }
+
   .theme-switcher-background {
     background-color: ${(props) => props.theme.toggleKeypadBackground};
     display: flex;

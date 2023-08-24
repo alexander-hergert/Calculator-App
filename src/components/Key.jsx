@@ -12,11 +12,15 @@ const Style = styled.button`
   border-bottom: 5px solid ${(props) => props.theme.keyShadow};
   color: ${(props) => props.theme.keyText};
   cursor: pointer;
+
+  &:hover {
+    background-color: ${(props) => props.theme.activeKey};
+  }
 `;
 
 /************** COMPONENT **************/
 
-const Key = ({ id, value, action }) => {
+const Key = ({ id, value, action, active }) => {
   const { state, dispatch } = useGlobalContext();
 
   const handleClick = () => {
@@ -24,7 +28,7 @@ const Key = ({ id, value, action }) => {
   };
 
   return (
-    <Style onClick={handleClick} id={id ? id : value}>
+    <Style onClick={handleClick} id={id ? id : value} className={active}>
       {value}
     </Style>
   );
