@@ -91,7 +91,7 @@ export const reducer = (state, action) => {
         type: "RESULT",
       };
 
-      if ((newState.result = Infinity)) {
+      if ((newState.result === Infinity)) {
         newState.result = "not allowed";
       }
     }
