@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import { useGlobalContext } from "../context";
+import { saveDataToLocalStorage } from "../utility";
 
 /************** STYLES **************/
 
@@ -82,18 +83,8 @@ const Theme = () => {
   const { setTheme } = useGlobalContext();
   const handleOnChange = (e) => {
     setTheme(e.target.value);
+    saveDataToLocalStorage("theme", e.target.value);
   };
-
-  //onload pick prefered theme or pick first if not prefered and then localStorage
-  useEffect(() => {
-    const firstRadioButton = document.querySelector(
-      'input[type="radio"]:first-child'
-    );
-
-    if (firstRadioButton) {
-      firstRadioButton.checked = true;
-    }
-  }, []);
 
   return (
     <Style>

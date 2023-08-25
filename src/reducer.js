@@ -90,6 +90,10 @@ export const reducer = (state, action) => {
           parseFloat(fTS(state.inputNumber) || 1),
         type: "RESULT",
       };
+
+      if ((newState.result = Infinity)) {
+        newState.result = "not allowed";
+      }
     }
 
     //On the first run or result or reset
