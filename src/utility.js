@@ -52,14 +52,14 @@ export function addThousandSeperator(input, value, lastInput) {
       //convert numbers so that only last digit will be floored to avoid rounding up on default
       const flooredInput =
         Math.floor(input * Math.pow(10, 9)) / Math.pow(10, 9);
-      const formattedInput = flooredInput.toLocaleString(undefined, {
+      const formattedInput = flooredInput.toLocaleString("en-US", {
         maximumFractionDigits: 9,
       });
       return formattedInput;
     }
   }
 
-  const formattedInput = input.toLocaleString(undefined, {
+  const formattedInput = input.toLocaleString("en-US", {
     maximumFractionDigits: 9,
   });
   return formattedInput;
