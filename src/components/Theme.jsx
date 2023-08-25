@@ -7,13 +7,14 @@ import { saveDataToLocalStorage } from "../utility";
 
 const Style = styled.div`
   display: flex;
-  align-items: center;
+  align-items: end;
   gap: 1rem;
 
   h2 {
-    font-size: 1.25rem;
+    font-size: 1rem;
     margin: 0;
     text-transform: uppercase;
+    letter-spacing: 3px;
   }
 
   .vertical {
@@ -42,7 +43,6 @@ const Style = styled.div`
     display: inline-block;
     width: 1.25rem;
     height: 1.25rem;
-    border-radius: 50%;
     background-color: ${(props) => props.theme.toggleKeypadBackground};
     margin-bottom: 10px;
   }

@@ -5,6 +5,7 @@ import { useGlobalContext } from "../context";
 /************** STYLES **************/
 
 const Style = styled.section`
+  transition: all 0.5s;
   text-align: right;
   background-color: ${(props) => props.theme.screenBackground};
   color: ${(props) => props.theme.outputText};
@@ -12,6 +13,10 @@ const Style = styled.section`
   padding: 1.5rem;
   margin: 1.5rem 0;
   width: 30rem;
+
+  @media screen and (max-width: 400px){
+    width: 22rem;
+  }
 
   p {
     margin: 0;

@@ -10,6 +10,10 @@ const Style = styled.section`
   justify-content: space-between;
   align-items: center;
   width: 30rem;
+
+  @media screen and (max-width: 400px) {
+    width: 22rem;
+  }
 `;
 
 /************** COMPONENT **************/

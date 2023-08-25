@@ -7,6 +7,7 @@ import { useGlobalContext } from "../context";
 /************** STYLES **************/
 
 const Style = styled.section`
+  transition: all 0.5s;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
@@ -15,6 +16,10 @@ const Style = styled.section`
   background-color: ${(props) => props.theme.toggleKeypadBackground};
   border-radius: 10px;
   width: 30rem;
+
+  @media screen and (max-width: 400px) {
+    width: 22rem;
+  }
 
   //style buttons here
 
@@ -34,6 +39,7 @@ const Style = styled.section`
   }
 
   #delete {
+    transition: background-color 0.5s;
     background-color: ${(props) => props.theme.keyBackgroundReset};
     border-bottom: 5px solid ${(props) => props.theme.keyShadowReset};
   }
@@ -43,6 +49,7 @@ const Style = styled.section`
   }
 
   #reset {
+    transition: background-color 0.5s;
     background-color: ${(props) => props.theme.keyBackgroundReset};
     border-bottom: 5px solid ${(props) => props.theme.keyShadowReset};
     grid-area: 5 / 1 / 5 / 3;
@@ -57,6 +64,7 @@ const Style = styled.section`
   }
 
   #result {
+    transition: background-color 0.5s;
     background-color: ${(props) => props.theme.keyBackgroundToggleResult};
     border-bottom: 5px solid ${(props) => props.theme.keyShadowToggleResult};
     grid-area: 5 / 3 / 5 / 5;

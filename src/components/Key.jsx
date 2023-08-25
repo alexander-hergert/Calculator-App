@@ -5,6 +5,7 @@ import { useGlobalContext } from "../context";
 /************** STYLES ***************/
 
 const Style = styled.button`
+  transition: background-color 0.5s;
   padding: 1rem;
   border-radius: 10px;
   border: none;

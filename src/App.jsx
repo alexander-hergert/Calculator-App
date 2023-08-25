@@ -9,6 +9,7 @@ import { loadDataFromLocalStorage } from "./utility";
 /**************** STYLES *******************/
 
 const Main = styled.main`
+  transition: all 0.5s;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,6 +17,10 @@ const Main = styled.main`
   color: ${(props) => props.theme.outputText};
   background-color: ${(props) => props.theme.mainBackground};
   padding: 6rem;
+
+  @media screen and (max-width: 400px) {
+    padding: 0.5rem;
+  }
 `;
 
 /**************** COMPONENTS *****************/
@@ -25,6 +30,7 @@ function App() {
 
   //onload pick prefered theme or pick first if not prefered and then localStorage
   useEffect(() => {
+    //check for stored value
     const storedTheme = loadDataFromLocalStorage("theme");
     if (storedTheme) {
       setTheme(storedTheme);
@@ -39,6 +45,7 @@ function App() {
       } else if (storedTheme === "theme-3") {
         document.querySelector('input[type="radio"]:last-child').checked = true;
       }
+      //if nothing stored check predefined theme
     } else if (
       window.matchMedia &&
       window.matchMedia("(prefers-color-scheme: dark)").matches
