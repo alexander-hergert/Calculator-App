@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useGlobalContext } from "../context";
 import { saveDataToLocalStorage } from "../utility";
@@ -80,11 +80,19 @@ const Style = styled.div`
 /************** COMPONENT **************/
 
 const Theme = () => {
-  const { setTheme } = useGlobalContext();
+  const { theme, setTheme } = useGlobalContext();
   const handleOnChange = (e) => {
     setTheme(e.target.value);
     saveDataToLocalStorage("theme", e.target.value);
   };
+  //Style the one result symbol
+  useEffect(() => {
+    if (theme === "theme-3") {
+      document.querySelector("#result").style.color = "black";
+    } else {
+      document.querySelector("#result").style.color = "white";
+    }
+  }, [theme]);
 
   return (
     <Style>

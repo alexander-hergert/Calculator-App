@@ -38,12 +38,15 @@ function App() {
         document.querySelector(
           'input[type="radio"]:first-child'
         ).checked = true;
+        document.querySelector("#result").style.color = "white";
       } else if (storedTheme === "theme-2") {
         document.querySelector(
           'input[type="radio"]:nth-child(2)'
         ).checked = true;
+        document.querySelector("#result").style.color = "white";
       } else if (storedTheme === "theme-3") {
         document.querySelector('input[type="radio"]:last-child').checked = true;
+        document.querySelector("#result").style.color = "black";
       }
       //if nothing stored check predefined theme
     } else if (
@@ -52,15 +55,18 @@ function App() {
     ) {
       setTheme("theme-3");
       document.querySelector('input[type="radio"]:last-child').checked = true;
+      document.querySelector("#result").style.color = "black";
     } else if (
       window.matchMedia &&
       window.matchMedia("(prefers-color-scheme: light)").matches
     ) {
       setTheme("theme-2");
       document.querySelector('input[type="radio"]:nth-child(2)').checked = true;
+      document.querySelector("#result").style.color = "white";
     } else {
       setTheme("theme-1");
       document.querySelector('input[type="radio"]:first-child').checked = true;
+      document.querySelector("#result").style.color = "white";
     }
   }, []);
 

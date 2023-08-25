@@ -1,6 +1,6 @@
 # Frontend Mentor - Calculator app
 
-![Design preview for the Calculator app coding challenge](./design/desktop-preview.jpg)
+![Design preview for the Calculator app coding challenge](public/design/desktop-preview.jpg)
 
 ## Welcome! 👋
 
@@ -22,3 +22,26 @@ Your users should be able to:
 - Perform mathematical operations like addition, subtraction, multiplication, and division
 - Adjust the color theme based on their preference
 - **Bonus**: Have their initial theme preference checked using `prefers-color-scheme` and have any additional changes saved in the browser
+
+## My process
+
+- Plan the design and structure
+- Add basic structures and create components
+- Add basic styles to have a simple structure
+- Add logic to calculator using a reducer
+- Add keylisteners
+- Create Themes with ThemeProvider and context
+- Make responsiveness
+- Manual testing
+- Fix issues in logic and styles
+
+### Built with
+
+- React
+- Styled Components
+- Vite
+
+### What I learned
+
+- Learned about ThemeProvider and more about props in Styled Components
+- Practice useReducer and context API in React

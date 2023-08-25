@@ -14,13 +14,17 @@ const Style = styled.section`
   margin: 1.5rem 0;
   width: 30rem;
 
-  @media screen and (max-width: 400px){
-    width: 22rem;
-  }
-
   p {
     margin: 0;
     font-size: 2.75rem;
+  }
+
+  @media screen and (max-width: 400px) {
+    width: 22rem;
+
+    p {
+      font-size: 2rem;
+    }
   }
 `;
 
