@@ -15,6 +15,7 @@ const Style = styled.section`
 
   p {
     margin: 0;
+    font-size: 2.75rem;
   }
 `;
 

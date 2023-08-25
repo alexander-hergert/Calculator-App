@@ -2,8 +2,13 @@ import {
   addThousandSeperator as aTS,
   filterThousandSeparator as fTS,
 } from "./utility";
+//avoiding switch case to reuse same names again like newState with inner scoping
+
+//This approach is using directly mutating of the state at places where it helps with readability
+//The muation is only made on copies of the state called newState which is important
 
 export const reducer = (state, action) => {
+  //TYPING CASE
   if (action.type === "TYPE") {
     let input = "";
     //Reset input to avoid the 0 at beginning
@@ -25,6 +30,7 @@ export const reducer = (state, action) => {
       type: "INPUT",
       selectedOperator: state.selectedOperator,
     };
+
     //convert number to string with separators
 
     newState.inputNumber = aTS(
@@ -41,6 +47,7 @@ export const reducer = (state, action) => {
     }
 
     return newState;
+    //CALCULATION CASE
   } else if (action.type === "CALCULATE") {
     const value = action.payload;
     let newState = { ...state };
@@ -103,6 +110,7 @@ export const reducer = (state, action) => {
     }
 
     return newState;
+    //DELE CASE
   } else if (action.type === "DELETE") {
     if (state.inputNumber.length === 1) {
       return { ...state, inputNumber: "0", result: state.result };
@@ -122,6 +130,7 @@ export const reducer = (state, action) => {
     }
 
     return newState;
+    //RESET CASE
   } else if (action.type === "RESET") {
     return {
       inputNumber: "0",

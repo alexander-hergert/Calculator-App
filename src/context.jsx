@@ -22,7 +22,7 @@ export const AppProvider = ({ children }) => {
 
   //SET THEME
   useEffect(() => {
-    console.log(`theme switched to ${theme}`);
+    //console.log(`theme switched to ${theme}`);
     if (theme === "theme-1") {
       setThemeColors({
         mainBackground: "hsl(222, 26%, 31%)",
