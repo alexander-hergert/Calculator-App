@@ -29,7 +29,12 @@ const Key = ({ id, value, action, active }) => {
   };
 
   return (
-    <Style onClick={handleClick} id={id ? id : value} className={active}>
+    <Style
+      onClick={handleClick}
+      id={id ? id : value}
+      className={active}
+      aria-label={`button ${value}`}
+    >
       {value}
     </Style>
   );

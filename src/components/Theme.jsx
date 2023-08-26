@@ -110,6 +110,7 @@ const Theme = () => {
             id="radio1"
             value="theme-1"
             onChange={handleOnChange}
+            aria-label="Select Theme 1"
           />
           <input
             type="radio"
@@ -117,6 +118,7 @@ const Theme = () => {
             id="radio2"
             value="theme-2"
             onChange={handleOnChange}
+            aria-label="Select Theme 2"
           />
           <input
             type="radio"
@@ -124,6 +126,7 @@ const Theme = () => {
             id="radio3"
             value="theme-3"
             onChange={handleOnChange}
+            aria-label="Select Theme 3"
           />
         </div>
       </div>
