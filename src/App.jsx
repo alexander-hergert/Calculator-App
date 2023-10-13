@@ -9,6 +9,7 @@ import { loadDataFromLocalStorage } from "./utility";
 /**************** STYLES *******************/
 
 const Main = styled.main`
+  min-height: 100vh;
   transition: all 0.5s;
   display: flex;
   flex-direction: column;
